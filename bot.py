@@ -20,8 +20,8 @@ def send_text(message):
 
     elif message.text == "Пока":
         bot.send_message(message.chat.id, "Уже уходишь, {}? Я буду скучать -(".format(username))
-    else:
-        bot.send_message(message.chat.id, "Я еще слишком глуп, и не знаю что ответить...")
+    #else:
+    #    bot.send_message(message.chat.id, "Я еще слишком глуп, и не знаю что ответить...")
 
 
 bot.polling()
