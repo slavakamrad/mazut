@@ -20,6 +20,8 @@ def send_text(message):
 
     elif message.text == "Пока":
         bot.send_message(message.chat.id, "Уже уходишь, {}? Я буду скучать -(".format(username))
+    elif message.text == "Сосешь?":
+        bot.send_message(message.chat.id, "Хуй сосет Байден и негры. А я тока спирт потягиваю.")
     #else:
     #    bot.send_message(message.chat.id, "Я еще слишком глуп, и не знаю что ответить...")
 
