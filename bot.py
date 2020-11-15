@@ -1,6 +1,7 @@
 import telebot
+from get_fin_quotes import *
 
-TOKEN = '1327008721:AAF8QJUstDeetV3XIcmgsIdBjEx2TBst4ZQ'
+TOKEN = ''
 bot = telebot.TeleBot(TOKEN)
 
 
@@ -22,8 +23,9 @@ def send_text(message):
         bot.send_message(message.chat.id, "Уже уходишь, {}? Я буду скучать -(".format(username))
     elif message.text == "Сосешь?":
         bot.send_message(message.chat.id, "Хуй сосет Байден и негры. А я тока спирт потягиваю.")
-    #else:
-    #    bot.send_message(message.chat.id, "Я еще слишком глуп, и не знаю что ответить...")
+
+    elif message.text == ticker_symbol:
+        bot.send_message(message.chat.id, get_fin_quotes(ticker_symbol))
 
 
 bot.polling()
