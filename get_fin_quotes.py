@@ -3,7 +3,7 @@ from alpha_vantage.foreignexchange import ForeignExchange
 
 
 def get_fin_quotes(ticker_symbol):
-    ts = TimeSeries(key="QG9CQILAD7ASQXK0")
+    ts = TimeSeries(key="")
     data = ts.get_quote_endpoint(ticker_symbol)
     symbol_search = ts.get_symbol_search(ticker_symbol)
     try:
@@ -18,13 +18,13 @@ def get_fin_quotes(ticker_symbol):
 
 
 def exchange_rate_usd():
-    ts = ForeignExchange(key='BK1STKHPQSJVPL20')
+    ts = ForeignExchange(key='')
     data = ts.get_currency_exchange_rate(from_currency='USD', to_currency='RUB')
     return str(round(float(data[0]['5. Exchange Rate']), 2)) + "р."
 
 
 def exchange_rate_euro():
-    ts = ForeignExchange(key='BK1STKHPQSJVPL20')
+    ts = ForeignExchange(key='')
     data = ts.get_currency_exchange_rate(from_currency='EUR', to_currency='RUB')
     return str(round(float(data[0]['5. Exchange Rate']), 2)) + "р."
     
