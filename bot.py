@@ -1,5 +1,6 @@
 import telebot
 from get_fin_quotes import *
+from tiker_list import tiker_list
 
 TOKEN = ''
 bot = telebot.TeleBot(TOKEN)
@@ -19,11 +20,12 @@ def send_text(message):
     if message.text == "Привет":
         bot.send_message(message.chat.id,
                          "{}, 🤝 Добро пожаловать в чат ".format(username))
-
     elif message.text == "Пока":
-        bot.send_message(message.chat.id, "Уже уходишь, {}? Я буду скучать -(".format(username))
-    elif message.text in message.text:
+        bot.send_message(message.chat.id, "Уже уходишь, {}? Акции сами себя не купят".format(username))
+    elif message.text in tiker_list:
         bot.send_message(message.chat.id, get_fin_quotes(message.text))
-
-
+    elif message.text == "евро":
+        bot.send_message(message.chat.id, exchange_rate_euro())
+    elif message.text == "доллар":
+        bot.send_message(message.chat.id, exchange_rate_usd())
 bot.polling()

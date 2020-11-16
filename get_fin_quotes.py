@@ -1,12 +1,34 @@
 from alpha_vantage.timeseries import TimeSeries
+from alpha_vantage.foreignexchange import ForeignExchange
 
 
 def get_fin_quotes(ticker_symbol):
-    ts = TimeSeries(key="")
-    data = ts.get_intraday(ticker_symbol, interval='1min')
-    return str(data[0][max(data[0].keys())])
+    ts = TimeSeries(key="QG9CQILAD7ASQXK0")
+    data = ts.get_quote_endpoint(ticker_symbol)
+    try:
+        return ticker_symbol + ": Цена - " + str(data[0]['05. price']) + " Объем - " + str(data[0]['06. volume']) \
+               + " Процент изменений с последнего торгового дня - " + str(data[0]['10. change percent'])
+    except ValueError:
+        print("Неверный тикет")
+    finally:
+        print("Конец обработки исключения")
 
 
-# QG9CQILAD7ASQXK0
+def exchange_rate_usd():
+    ts = ForeignExchange(key='BK1STKHPQSJVPL20')
+    data = ts.get_currency_exchange_rate(from_currency='USD', to_currency='RUB')
+    return str(round(float(data[0]['5. Exchange Rate']), 2)) + "р."
+
+
+def exchange_rate_euro():
+    ts = ForeignExchange(key='BK1STKHPQSJVPL20')
+    data = ts.get_currency_exchange_rate(from_currency='USD', to_currency='RUB')
+    return str(round(float(data[0]['5. Exchange Rate']), 2)) + "р."
+
+
+
+
+
+
 
 
