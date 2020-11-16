@@ -25,6 +25,6 @@ def exchange_rate_usd():
 
 def exchange_rate_euro():
     ts = ForeignExchange(key='BK1STKHPQSJVPL20')
-    data = ts.get_currency_exchange_rate(from_currency='USD', to_currency='RUB')
+    data = ts.get_currency_exchange_rate(from_currency='EUR', to_currency='RUB')
     return str(round(float(data[0]['5. Exchange Rate']), 2)) + "р."
     
