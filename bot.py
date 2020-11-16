@@ -2,7 +2,7 @@ import telebot
 from get_fin_quotes import *
 from tiker_list import tiker_list
 
-TOKEN = '1327008721:AAF8QJUstDeetV3XIcmgsIdBjEx2TBst4ZQ'
+TOKEN = ''
 bot = telebot.TeleBot(TOKEN)
 
 
