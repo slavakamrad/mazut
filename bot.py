@@ -1,8 +1,10 @@
 import telebot
 from get_fin_quotes import *
 from tiker_list import tiker_list
+from get_fin_news import *
+from get_rus_qoutes import *
 
-TOKEN = ''
+TOKEN = '1327008721:AAF8QJUstDeetV3XIcmgsIdBjEx2TBst4ZQ'
 bot = telebot.TeleBot(TOKEN)
 
 
@@ -28,4 +30,17 @@ def send_text(message):
         bot.send_message(message.chat.id, exchange_rate_euro())
     elif message.text == "доллар":
         bot.send_message(message.chat.id, exchange_rate_usd())
+    elif message.text == "новости":
+        bot.send_message(message.chat.id, post_news())
+    elif message.text == "RUS":
+        def get_tiker(message):
+            try:
+                bot.send_message(message.chat.id, get_ru_quotes(str(message.text)))
+                print(message.text, "ХУЙ", get_ru_quotes(str(message.text)))
+            except RuntimeError:
+                stock_except()
+        msg = bot.send_message(message.chat.id, "Введите тикер: ")
+
+        bot.register_next_step_handler(msg, get_tiker)
+
 bot.polling()
