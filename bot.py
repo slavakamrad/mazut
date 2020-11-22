@@ -4,7 +4,7 @@ from tiker_list import tiker_list
 from get_fin_news import *
 from get_rus_qoutes import *
 
-TOKEN = '1327008721:AAF8QJUstDeetV3XIcmgsIdBjEx2TBst4ZQ'
+TOKEN = ''
 bot = telebot.TeleBot(TOKEN)
 
 
